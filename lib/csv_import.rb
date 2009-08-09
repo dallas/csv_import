@@ -13,13 +13,13 @@ module CsvImport
 			@csv_field_names = []
 			CSV.parse(params[csv_file_param].read).each_with_index do |row, index|
 			  if index.zero?
-			    @csv_field_names = (params[:field_names_in_first_row] ? row : (0..(row.length - 1)).to_a)
-			    next if params[:field_names_in_first_row]
+			    @csv_field_names = (params[:csv_field_names_in_first_row] ? row : (0..(row.length - 1)).to_a)
+			    next if params[:csv_field_names_in_first_row]
 			  end
 
 				begin
 				  row_hash = @csv_field_names.zip(row).inject({}) {|hash, pair| hash[pair.first] = pair.last; hash} unless @csv_field_names.blank?
-					yield row_hash
+					yield HashWithIndifferentAccess.new(row_hash)
 					@csv_rows_imported += 1
 				rescue Exception => e
 				  if rescue_exceptions

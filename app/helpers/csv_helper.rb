@@ -12,7 +12,7 @@ module CsvHelper
     label_tag(name, text, options)
   end
 
-  def csv_field_names_check_box_tag(name = 'csv_field_names_check_box_tag', value = '1', checked = true, options = {})
+  def csv_field_names_check_box_tag(name = 'csv_field_names_in_first_row', value = '1', checked = true, options = {})
     check_box_tag(name, value, checked, options)
   end
 
@@ -23,7 +23,7 @@ module CsvHelper
       wrapping_tag,
       (returning '' do |html|
         if @csv_bad_rows
-          html << content_tag(:h3, "#{pluralize @csv_bad_rows.length, 'row'} failed. #{pluralize @csv_rows_imported, 'row'} <em>were <strong>not</strong></em> imported.")
+          html << content_tag(:h3, "#{pluralize @csv_bad_rows.length, 'row'} failed. #{pluralize @csv_rows_imported, 'row'} <em><strong>would have been</strong> successfully</em> imported.")
           html << content_tag(:p, 'Anytime there are bad rows, the entire import is cancelled. This is to allow you to make corrections and re-run the import without having to manually roll back the previous attempt.')
         else
           html << content_tag(:h3, "#{pluralize @csv_rows_imported, 'row'} were successfully imported!")
