@@ -65,7 +65,7 @@ In your view (don't forget to set :multipart => true):
     
     <p>
       <%= check_box_tag :destroy_all_first %>
-  	  <%= label :destroy_all_first, 'Destroy all existing employee records first.' %>
+      <%= label :destroy_all_first, 'Destroy all existing employee records first.' %>
     </p>
   <%- end -%>
 
