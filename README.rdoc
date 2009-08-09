@@ -71,7 +71,7 @@ In your view (don't forget to set :multipart => true):
 
 == Other View Helpers Included
 
-All of these are included when you call +csv_fields+.
+All of these are called in +csv_fields+.
 These exist for flexibility's sake. Feel free to mix
 and match or even override +csv_fields+ in your own helper.
 
