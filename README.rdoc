@@ -86,3 +86,38 @@ and match or even override +csv_fields+ in your own helper.
   csv_rows_imported_content(wrapping_tag = :div, html_options = {})
   
   csv_bad_rows_table(header = 'Bad CSV rows', html_options = {})
+
+== To-do
+
+=== Allow for mapping of incoming field name labels to expected or preferred keys:
+
+  each_csv_row(:non_useful_key_name => :key_expected, :other_key => :better_key) do |row_hash|
+    # …
+  end
+  
+Or even…
+
+  each_csv_row(0 => :first_name, 1 => :last_name, 2 => :email) do |row_hash|
+    # …
+  end
+
+=== Move the view helper methods to FormHelper, FormHelper::InstanceTag, and FormBuilder
+
+Specifically FormBuilder so that things like this are made possible:
+
+  <%- form_for @company do |f| -%>
+    <p>
+      <%= f.label :name, 'Company Name' %><br />
+      <%= f.text_field :name %>
+    </p>
+    
+    # yadda, yadda
+    
+    <p>
+      <%= f.csv_file_label :employees_csv_file, 'Import Employees from a CSV' %><br />
+      <%= f.csv_file :employees_csv_file %>
+    </p>
+    
+    <p><%= f.submit 'Save' %></p>
+  <%- end -%>
+  
