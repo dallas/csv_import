@@ -81,7 +81,7 @@ and match or even override +csv_fields+ in your own helper.
   
   csv_field_names_label(name = 'csv_field_names_in_first_row', text = 'Field name labels are in the first row.', options = {})
   
-  csv_field_names_check_box_tag(name = 'csv_field_names_check_box_tag', value = '1', checked = true, options = {})
+  csv_field_names_check_box_tag(name = 'csv_field_names_in_first_row', value = '1', checked = true, options = {})
   
   csv_rows_imported_content(wrapping_tag = :div, html_options = {})
   
